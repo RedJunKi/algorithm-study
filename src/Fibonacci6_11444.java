@@ -34,10 +34,12 @@ public class Fibonacci6_11444 {
                 {0, 1}
         };
 
+        //지수가 홀수일때는 result에 저장 A * A²
         while (exp > 0) {
             if (exp % 2 == 1) {
                 result = multiplyMatrices(result, base);
             }
+            //지수가 짝수일때는 A² * A²
             base = multiplyMatrices(base, base);
             exp /= 2;
         }

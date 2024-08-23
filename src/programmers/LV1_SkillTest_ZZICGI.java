@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LV1_SkillTest_ZZICGI {
+    public static void main(String[] args) {
+        Solution solution = new Solution();
+        solution.solution(new int[]{1, 2, 3, 4, 5});
+    }
     static class Solution {
         public int[] solution(int[] answers) {
             int[] firstPattern = {1, 2, 3, 4, 5};

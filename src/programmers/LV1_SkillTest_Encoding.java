@@ -1,16 +1,6 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.UUID;
+package programmers;
 
-public class Main {
-
-    public static void main(String[] args) {
-        Solution solution = new Solution();
-        String result = solution.solution("aukks", "wbqd", 5);
-        System.out.println(result); // 예상 출력: "happy"
-    }
-
+public class LV1_SkillTest_Encoding {
     static class Solution {
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
 

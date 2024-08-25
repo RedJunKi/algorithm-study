@@ -1,9 +1,13 @@
+package boj;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Queue;
+import java.util.StringTokenizer;
 
-public class Main {
+public class NQueen_9663 {
     static int[][] direction = new int[][]{{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
     static int N;
     static int M;
@@ -46,4 +50,3 @@ public class Main {
         return true;
     }
 }
-

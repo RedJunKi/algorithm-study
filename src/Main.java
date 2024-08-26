@@ -1,49 +1,37 @@
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.*;
+import java.security.interfaces.RSAKey;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main {
-    static int[][] direction = new int[][]{{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
-    static int N;
-    static int M;
-    static int cnt = 0;
-    static Queue<int[]> queue;
-
+    static int N = 4;
+    static int M = 6;
+    static int[] riceArr;
+    static int max;
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken());
+        riceArr = new int[]{19, 15, 10, 17};
+        Arrays.sort(riceArr);
+        int start = 0;
+        int end = riceArr[N - 1];
+        int result = 0;
 
-        int[] chess = new int[N];
+        while (start <= end) {
+            long total = 0;
+            int mid = (start + end) / 2;
 
-        start(chess, 0);
-
-        System.out.println(cnt);
-    }
-
-    private static void start(int[] chess, int row) {
-        if (row == N) {
-            System.out.println(Arrays.toString(chess));
-            cnt++;
-            return;
-        }
-
-        for (int col = 0; col < N; col++) {
-            if (isSafe(row, col, chess)) {
-                chess[row] = col;  // 퀸을 (row, col)에 놓음
-                start(chess, row + 1);    // 다음 행으로 이동
+            for (int i = 0; i < N; i++) {
+                if (riceArr[i] > mid) {
+                    total += riceArr[i] - mid;
+                }
+            }
+            if (total < M) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+                result = mid;
             }
         }
-    }
-
-    private static boolean isSafe(int row, int col, int[] chess) {
-        for (int i = 0; i < row; i++) {
-            if (chess[i] == col || Math.abs(chess[i] - col) == Math.abs(i - row)) {
-                return false;
-            }
-        }
-        return true;
+        System.out.println(result);
     }
 }
-

@@ -5,33 +5,47 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Main {
-    static int N = 4;
-    static int M = 6;
-    static int[] riceArr;
-    static int max;
+    static int N = 3;
+    static int M = 4;
+    static int[][] arr;
+    static int[][] result;
+
     public static void main(String[] args) throws IOException {
-        riceArr = new int[]{19, 15, 10, 17};
-        Arrays.sort(riceArr);
-        int start = 0;
-        int end = riceArr[N - 1];
-        int result = 0;
+        arr = new int[][]{{1, 3, 3, 2}, {2, 1, 4, 1}, {0, 6, 4, 8}};
+        result = new int[N][M];
 
-        while (start <= end) {
-            long total = 0;
-            int mid = (start + end) / 2;
-
-            for (int i = 0; i < N; i++) {
-                if (riceArr[i] > mid) {
-                    total += riceArr[i] - mid;
-                }
-            }
-            if (total < M) {
-                end = mid - 1;
-            } else {
-                start = mid + 1;
-                result = mid;
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < M; j++) {
+                result[i][j] = arr[i][j];
             }
         }
-        System.out.println(result);
+
+        for (int j = 1; j < M; j++) {
+            for (int i = 0; i < N; i++) {
+                int up, down, center;
+                if (i - 1 < 0) {
+                    up = Integer.MIN_VALUE;
+                } else {
+                    up = arr[i - 1][j];
+                }
+
+                if (i + 1 >= N) {
+                    down = Integer.MIN_VALUE;
+                } else {
+                    down = arr[i + 1][j];
+                }
+
+                center = arr[i][j];
+
+                result[i][j] = result[i][j]+ Math.max(up, Math.max(down, center));
+            }
+        }
+        int r = 0;
+        for (int i = 0; i < N; i++) {
+            for (int k = 0; k < M; k++) {
+                r = Math.max(r, result[i][k]);
+            }
+        }
+        System.out.println(r);
     }
 }

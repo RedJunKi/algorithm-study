@@ -1,10 +1,12 @@
+package boj;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.Deque;
 
-
-public class Main {
+public class AC_5430 {
     static int T;
     static String function;
     static int numSize;

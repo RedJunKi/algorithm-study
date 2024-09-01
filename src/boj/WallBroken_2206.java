@@ -1,12 +1,13 @@
+package boj;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class Main {
+public class WallBroken_2206 {
     static int N, M;
     static int[][] map;
     static int[][][] visited;
